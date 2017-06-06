@@ -28,10 +28,13 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate  
     var videoPreviewLayer   :AVCaptureVideoPreviewLayer?
     
     // Colors for displaying feedback. //
+    var defaultColor = UIColor(0, 125, 255)
     var successResponseColor = UIColor(31, 163, 31)
     var loggedOutResponseColor = UIColor(242, 159, 74)
     
     var errorColor = UIColor(241, 105, 104)
+    
+    var working = false
 
     var lastReadQR = ""
     
@@ -96,14 +99,23 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate  
             
             if metadataObj.stringValue != nil {
                 
-                if (lastReadQR != metadataObj.stringValue)
+                if (lastReadQR != metadataObj.stringValue && !working)
                 {
-                    lastReadQR = metadataObj.stringValue!
+                    self.lastReadQR = metadataObj.stringValue!
+                    /// Update background to
+                    DispatchQueue.main.async {
+                        
+                        self.videoPreviewLayer?.isHidden = true
+                        self.responseView.backgroundColor = self.defaultColor
+                        self.messageLabel.text = "Working..."
+                        
+                    }
                     
-                    
+                    working = true
                     
                     loginUser(metadataObj.stringValue!) { loggedIn, error in
                         self.updateView(loggedIn: loggedIn, error: error)
+                        working = false
                     }
                     
                     
