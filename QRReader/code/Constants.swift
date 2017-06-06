@@ -40,13 +40,23 @@ struct Constants
         }
     }
 
-    struct MobileResponse
+    class MobileResponse
     {
-        public static let API_USERNAME = ""
-        public static let API_PASSWORD = ""
+        public static let API_USERNAME = "info@helloworld.se"
+        public static let API_PASSWORD = "Lkv7fdc!"
+        public static let SENDER_NAME = "Hello World!"
 
         public struct URLS
         {
+            public static let BASE = "https://api.mobileresponse.se/"
+            public static let SEND_MESSAGE = BASE + "quickie/send-message"
+            public static let AUTHENTICATE = BASE + "authenticate"
+            public static let IS_AUTHENTICATED = BASE + "is-authenticated"
+        }
+
+        public static func getMessageBody(loggedIn : Bool, name : String) -> String
+        {
+            return "Hej!\nDitt barn, \(name) har nu \(loggedIn ? "anlänt till" : "lämnat") lägret!"
         }
     }
 }

@@ -17,26 +17,21 @@ enum RequestType : String
     case DELETE = "DELETE"
 }
 
-
 class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate  {
 
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var responseView: UIView!
-    
-    
-    var changed = false
     
 
     
     var captureSession      :AVCaptureSession?
     var videoPreviewLayer   :AVCaptureVideoPreviewLayer?
     
-    var defaultResponseColor = UIColor(displayP3Red: 90.0/255.0, green: 152.0/255.0, blue: 1.0, alpha: 1.0)
-    var successResponseColor = UIColor(displayP3Red: 0.0, green: 0.7, blue: 0.3, alpha: 1.0)
-    var loggedOutResponseColor = UIColor(displayP3Red: 1.0, green: 0.5, blue: 0.0, alpha: 1.0)
+    // Colors for displaying feedback. //
+    var successResponseColor = UIColor(31, 163, 31)
+    var loggedOutResponseColor = UIColor(242, 159, 74)
     
-    
-    var errorColor = UIColor(displayP3Red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
+    var errorColor = UIColor(241, 105, 104)
 
     var lastReadQR = ""
     
@@ -46,7 +41,7 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate  
         super.viewDidLoad()
         
         
-        //let captureDevice = AVCaptureDevice.defaultDevice(withDeviceType: .builtInWideAngleCamera, mediaType: AVMediaTypeVideo, position: .front)
+        // Initiate the camera and caputre device so that we can read QR codes. //
         let captureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
         
         do
@@ -138,7 +133,7 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate  
         }
        
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 30.0, execute: {
             self.lastReadQR = ""
         })
         
@@ -147,20 +142,48 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate  
             
         })
     }
-    
+
+    func sendConfirmationMessage(name : String, loggedIn : Bool, numbers : [String])
+    {
+        MobileResponse.send(message: Constants.MobileResponse.getMessageBody(loggedIn: loggedIn, name: name), to: numbers, from: "Hello World!")
+    }
+
     func loginUser(_ str : String, completionHandler : @escaping (Bool, String?) -> Void)
     {
-        let qrData  = str.components(separatedBy: "&")
-        let cardID  = qrData[0]
+        print("LOGIN: \(str)")
+        let qrData  = str.components(separatedBy: "|")
+        
+        guard qrData.count > 4 else
+        {
+            print("WRONG FORMAT")
+            self.updateView(loggedIn: false, error: "Wrong QR Format")
+            return
+        }
+        
+        let cardID  = qrData[1]
+        let firstName = qrData[2]
+        let lastName = qrData[3]
+        let fullName = firstName + " " + lastName
+        var recipients: [String] = []
+
+        for i in 4 ..< qrData.count
+        {
+            if (qrData[i] != "")
+            {
+                recipients.append(qrData[i])
+            }
+        }
+
+        print("[INFO] Sending message to: \(qrData)")
+
         
         var active = false
         var requestError : String? = nil
         
         
-        // Make a request to get the label of the current card. /
+        // Make a request to get the label of the current card. //
         Request.make(request: .GET, to: Constants.Trello.URLS.getLabels(cardID: cardID)) { getData in
             print("GET: \(self.stringFrom(data: getData))")
-            
             do
             {
                 // Get the JSON response. //
@@ -179,10 +202,9 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate  
                     requestError = ("[ERROR] Could not fetch data: \"id\" from response.")
                     return
                 }
-                
+
                 // Set active to if the name is active or not. //
                 active = (name == "active")
-                
                 
                 // Delete the previous label. //
                 let deleteParameters = ["idLabel" : labelID, "key" : Constants.Trello.API_KEY, "token" : Constants.Trello.API_TOKEN]
@@ -202,14 +224,9 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate  
                         print("Success!")
                         
                         self.updateView(loggedIn: !active, error: requestError)
-                        
-
+                        self.sendConfirmationMessage(name : fullName, loggedIn : !active, numbers : recipients)
                     }
-                    
                 }
-                
-                
-                
             }
             catch
             {
@@ -219,15 +236,20 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate  
         
     }
 
-    
+    // Extract data from Data -> String
     func stringFrom(data : Data) -> NSString
     {
         return NSString(data: data, encoding: String.Encoding.ascii.rawValue)!
     }
-
-  
- 
-
-
+    
+    
 }
 
+
+extension UIColor
+{
+    convenience init (_ r : Int, _ g : Int, _ b : Int)
+    {
+        self.init(displayP3Red: CGFloat(r)/255.0, green: CGFloat(g)/255.0, blue: CGFloat(b)/255.0, alpha: 1.0)
+    }
+}

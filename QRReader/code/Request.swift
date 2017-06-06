@@ -19,7 +19,7 @@ class Request
     }
     
     // Make a request to a url with data. //
-    public static func make(request requestType : RequestType, to stringURL : String, with data : [String : String]?, completion: @escaping (Data) -> Void)
+    public static func make(request requestType : RequestType, to stringURL : String, with data : [String : Any]?, completion: @escaping (Data) -> Void)
     {
         print("[INFO] Making a request to: \"\(stringURL)\"")
         // First, let's create the URL that we will use to send the request to. This is simply the base URL (https://api.trello.com/1/) + the url provided by the parmeter //
