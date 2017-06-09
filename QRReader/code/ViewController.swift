@@ -21,18 +21,19 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate  
 
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var responseView: UIView!
-    
+    @IBOutlet weak var dismissButton: UIButton!
+    @IBOutlet weak var dismissLabel: UILabel!
 
     
     var captureSession      :AVCaptureSession?
     var videoPreviewLayer   :AVCaptureVideoPreviewLayer?
     
     // Colors for displaying feedback. //
-    var defaultColor = UIColor(0, 125, 255)
-    var successResponseColor = UIColor(31, 163, 31)
+    var defaultColor = UIColor(41, 128, 185)
+    var successResponseColor = UIColor(39, 174, 96)
     var loggedOutResponseColor = UIColor(242, 159, 74)
     
-    var errorColor = UIColor(241, 105, 104)
+    var errorColor = UIColor(192, 57, 43)
     
     var working = false
 
@@ -88,17 +89,17 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate  
     func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
         // Check if the metadataObjects array is not nil and it contains at least one object.
         if metadataObjects == nil || metadataObjects.count == 0 {
-      
+            print("[INFO] Got nothing!")
             return
         }
-        
+        print("[INFO] Got output")
         // Get the metadata object.
         let metadataObj = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
         
         if metadataObj.type == AVMetadataObjectTypeQRCode {
             
             if metadataObj.stringValue != nil {
-                
+                print("[INFO] Status: lastReadQR: \(lastReadQR), working: \(working)")
                 if (lastReadQR != metadataObj.stringValue && !working)
                 {
                     self.lastReadQR = metadataObj.stringValue!
@@ -108,14 +109,16 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate  
                         self.videoPreviewLayer?.isHidden = true
                         self.responseView.backgroundColor = self.defaultColor
                         self.messageLabel.text = "Working..."
-                        
+                        self.dismissButton.isHidden = true
+                        self.dismissLabel.isHidden = true
                     }
                     
                     working = true
                     
                     loginUser(metadataObj.stringValue!) { loggedIn, error in
                         self.updateView(loggedIn: loggedIn, error: error)
-                        working = false
+
+
                     }
                     
                     
@@ -130,13 +133,15 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate  
         print("We are alive!")
         var loggedInText = loggedIn ? "Logged in!" : "Logged out!"
         var bgColor = loggedIn ? self.successResponseColor : self.loggedOutResponseColor
-        if let _ = error
+        if let error = error
         {
             bgColor = self.errorColor
-            loggedInText = error!
+            loggedInText = error
         }
         
         DispatchQueue.main.async {
+            self.dismissButton.isHidden = false
+            self.dismissLabel.isHidden = false
             self.videoPreviewLayer?.isHidden = true
             
             self.messageLabel.text = loggedInText
@@ -149,18 +154,26 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate  
             self.lastReadQR = ""
         })
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
-            self.videoPreviewLayer!.isHidden = false
-            
-        })
+        if error == nil || false
+        {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
+                self.videoPreviewLayer!.isHidden = false
+                self.working = false
+            })
+        }
     }
 
     func sendConfirmationMessage(name : String, loggedIn : Bool, numbers : [String])
     {
-        MobileResponse.send(message: Constants.MobileResponse.getMessageBody(loggedIn: loggedIn, name: name), to: numbers, from: "Hello World!")
+        MobileResponse.send(message: Constants.MobileResponse.getMessageBody(loggedIn: loggedIn, name: name), to: numbers, from: "Hello World!") { error in
+            if error != nil
+            {
+                self.updateView(loggedIn: loggedIn, error: error)
+            }
+        }
     }
 
-    func loginUser(_ str : String, completionHandler : @escaping (Bool, String?) -> Void)
+    func loginUser(_ str : String, completion: @escaping (Bool, String?) -> Void)
     {
         print("LOGIN: \(str)")
         let qrData  = str.components(separatedBy: "|")
@@ -180,7 +193,8 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate  
 
         for i in 4 ..< qrData.count
         {
-            if (qrData[i] != "")
+
+            if qrData[i] != ""
             {
                 recipients.append(qrData[i])
             }
@@ -191,27 +205,40 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate  
         
         var active = false
         var requestError : String? = nil
-        
+
         
         // Make a request to get the label of the current card. //
-        Request.make(request: .GET, to: Constants.Trello.URLS.getLabels(cardID: cardID)) { getData in
-            print("GET: \(self.stringFrom(data: getData))")
+        Request.make(request: .GET, to: Constants.Trello.URLS.getLabels(cardID: cardID)) { getError, getData in
+
+            guard getError == nil else
+            {
+                completion(false, getError)
+                return
+            }
+
+
+
+            print("GET: \(self.stringFrom(data: getData!))")
             do
             {
                 // Get the JSON response. //
-                let json = try JSONSerialization.jsonObject(with: getData, options : []) as? [[String : Any]]
+                let json = try JSONSerialization.jsonObject(with: getData!, options : []) as? [[String : Any]]
                 
                 // Make sure that we have a name. //
                 guard let name = json![0]["name"] as? String else
                 {
-                    requestError = ("[ERROR] Could not fetch data: \"name\" from response.")
+                    requestError = "Could not fetch data: \"name\" from response."
+                    print("[ERROR] \(String(describing: requestError!))")
+                    completion(false, requestError)
                     return
                 }
                 
                 // Make sure that we have an ID for the label. //
                 guard let labelID = json![0]["id"] as? String else
                 {
-                    requestError = ("[ERROR] Could not fetch data: \"id\" from response.")
+                    requestError = "Could not fetch data: \"id\" from response."
+                    print("[ERROR] \(String(describing: requestError!))")
+                    completion(false, requestError)
                     return
                 }
 
@@ -221,8 +248,15 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate  
                 // Delete the previous label. //
                 let deleteParameters = ["idLabel" : labelID, "key" : Constants.Trello.API_KEY, "token" : Constants.Trello.API_TOKEN]
                 
-                Request.make(request: .DELETE, to: Constants.Trello.URLS.deleteLabels(cardID: cardID, labelID: labelID), with: deleteParameters) { deleteData in
-                    print("DELETE: \(self.stringFrom(data: deleteData))")
+                Request.make(request: .DELETE, to: Constants.Trello.URLS.deleteLabels(cardID: cardID, labelID: labelID), with: deleteParameters) { deleteError, deleteData in
+
+                    guard deleteError == nil else
+                    {
+                        completion(false, deleteError)
+                        return
+                    }
+
+                    print("DELETE: \(self.stringFrom(data: deleteData!))")
                     // Add the new label. //
                     let newLabelColor  = (active) ? "red" : "green"
                     
@@ -231,22 +265,41 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate  
                                         , "name" : newLabelName
                                         , "key" : Constants.Trello.API_KEY
                                         , "token" : Constants.Trello.API_TOKEN ]
-                    Request.make(request: .POST, to: Constants.Trello.URLS.setLabel(cardID: cardID), with: addParameters) { postData in
-                        print("POST: \(self.stringFrom(data: postData))")
+
+                    Request.make(request: .POST, to: Constants.Trello.URLS.setLabel(cardID: cardID), with: addParameters) { postError, postData in
+
+                        guard postError == nil else
+                        {
+                            completion(false, postError)
+                            return
+                        }
+
+                        print("POST: \(self.stringFrom(data: postData!))")
                         print("Success!")
-                        
+
+
                         self.updateView(loggedIn: !active, error: requestError)
+                        
                         self.sendConfirmationMessage(name : fullName, loggedIn : !active, numbers : recipients)
                     }
                 }
             }
             catch
             {
-                requestError = ("[ERROR] Whilst casting JSON: \(error.localizedDescription)")
+                requestError = ("Error whilst casting JSON: \(error.localizedDescription)")
+                print("[ERROR] \(String(describing: requestError))")
             }
         }
+
         
     }
+    
+    @IBAction func dismissButtonPressed(_ sender: Any)
+    {
+        self.videoPreviewLayer?.isHidden = false
+        self.working = false
+    }
+    
 
     // Extract data from Data -> String
     func stringFrom(data : Data) -> NSString

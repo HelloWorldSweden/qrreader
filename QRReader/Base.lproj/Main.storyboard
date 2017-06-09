@@ -25,21 +25,42 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b2H-xr-nkd" userLabel="ResponseView">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan your card here!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7U-ld-qS3">
-                                        <rect key="frame" x="0.0" y="283.5" width="375" height="100"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="cEM-Kc-dWC"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan your card here!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="11" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="b7U-ld-qS3">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Light" family="Apple SD Gothic Neo" pointSize="38"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to dismiss / interrupt" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aiX-CH-axe" userLabel="Dismiss Label">
+                                        <rect key="frame" x="83" y="625" width="208" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="8St-PE-Kud"/>
+                                            <constraint firstAttribute="width" constant="208" id="fCh-G1-A2f"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Light" family="Apple SD Gothic Neo" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1el-Ll-edN" userLabel="Dismiss Button">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Light" family="Apple SD Gothic Neo" pointSize="17"/>
+                                        <connections>
+                                            <action selector="dismissButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dIK-Eg-fkW"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.3529411764705882" green="0.59607843137254901" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.20392156862745098" green="0.59607843137254901" blue="0.85882352941176465" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="b7U-ld-qS3" secondAttribute="trailing" id="4I8-9J-YTC"/>
-                                    <constraint firstItem="b7U-ld-qS3" firstAttribute="centerY" secondItem="b2H-xr-nkd" secondAttribute="centerY" id="8Cd-CF-Bt8"/>
-                                    <constraint firstItem="b7U-ld-qS3" firstAttribute="leading" secondItem="b2H-xr-nkd" secondAttribute="leading" id="Pa7-dr-uDQ"/>
+                                    <constraint firstItem="b7U-ld-qS3" firstAttribute="top" secondItem="b2H-xr-nkd" secondAttribute="top" id="1zW-Ck-qyV"/>
+                                    <constraint firstAttribute="bottom" secondItem="1el-Ll-edN" secondAttribute="bottom" id="7JF-6B-3Wr"/>
+                                    <constraint firstItem="b7U-ld-qS3" firstAttribute="leading" secondItem="b2H-xr-nkd" secondAttribute="leading" id="Gtu-hP-pJv"/>
+                                    <constraint firstItem="1el-Ll-edN" firstAttribute="leading" secondItem="b2H-xr-nkd" secondAttribute="leading" id="XND-UZ-0Iy"/>
+                                    <constraint firstItem="aiX-CH-axe" firstAttribute="centerX" secondItem="b2H-xr-nkd" secondAttribute="centerX" id="Yjl-4e-LKd"/>
+                                    <constraint firstItem="1el-Ll-edN" firstAttribute="top" secondItem="b2H-xr-nkd" secondAttribute="top" id="ZMo-iN-b5g"/>
+                                    <constraint firstAttribute="trailing" secondItem="1el-Ll-edN" secondAttribute="trailing" id="dPN-EF-hwR"/>
+                                    <constraint firstAttribute="bottom" secondItem="aiX-CH-axe" secondAttribute="bottom" constant="18" id="gZu-65-et0"/>
+                                    <constraint firstAttribute="bottom" secondItem="b7U-ld-qS3" secondAttribute="bottom" constant="50" id="izd-3R-F2a"/>
+                                    <constraint firstAttribute="trailing" secondItem="b7U-ld-qS3" secondAttribute="trailing" id="tU0-Bf-8lQ"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -52,6 +73,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="dismissButton" destination="1el-Ll-edN" id="h9p-hY-IGF"/>
+                        <outlet property="dismissLabel" destination="aiX-CH-axe" id="6h5-PF-hIH"/>
                         <outlet property="messageLabel" destination="b7U-ld-qS3" id="W5J-ad-Hsr"/>
                         <outlet property="responseView" destination="b2H-xr-nkd" id="EMs-mS-eww"/>
                     </connections>
