@@ -17,7 +17,7 @@ class MobileResponse
                 "data" : [
                         "username"      : Constants.MobileResponse.API_USERNAME,
                         "password"      : Constants.MobileResponse.API_PASSWORD,
-                        "recipients"    : [""],
+                        "recipients"    : numbers,
                         "message"       : body,
                         "senderName"    : sender,
                 ]
