@@ -28,8 +28,8 @@
                                     <constraint firstAttribute="height" constant="220" id="9Lz-VN-0RG"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version 1.1 (1)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6YW-Xi-7oU">
-                                <rect key="frame" x="110.5" y="337" width="154.5" height="42"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version 1.1 (5)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6YW-Xi-7oU">
+                                <rect key="frame" x="108.5" y="337" width="159" height="42"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="wgn-VX-3fW"/>
                                 </constraints>

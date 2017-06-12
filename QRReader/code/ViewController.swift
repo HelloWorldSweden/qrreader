@@ -176,29 +176,28 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate  
     func loginUser(_ str : String, completion: @escaping (Bool, String?) -> Void)
     {
         print("LOGIN: \(str)")
+
         let qrData  = str.components(separatedBy: "|")
         
-        guard qrData.count > 4 else
+        guard qrData.count > 2 else
         {
             print("WRONG FORMAT")
             self.updateView(loggedIn: false, error: "Wrong QR Format")
             return
         }
         
-        let cardID  = qrData[1]
-        let firstName = qrData[2]
-        let lastName = qrData[3]
-        let fullName = firstName + " " + lastName
+        let cardID  = qrData[0]
+        let firstName = qrData[1]
         var recipients: [String] = []
 
-        for i in 4 ..< qrData.count
+        for i in 2 ..< qrData.count
         {
-
             if qrData[i] != ""
             {
                 recipients.append(qrData[i])
             }
         }
+        print("\tFirst: \(firstName), id: \(cardID), recipients: \(recipients.joined(separator: ", "))")
 
         print("[INFO] Sending message to: \(qrData)")
 
@@ -243,7 +242,7 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate  
                 }
 
                 // Set active to if the name is active or not. //
-                active = (name == "active")
+                active = (name == Constants.Trello.LABEL_ACTIVE)
                 
                 // Delete the previous label. //
                 let deleteParameters = ["idLabel" : labelID, "key" : Constants.Trello.API_KEY, "token" : Constants.Trello.API_TOKEN]
@@ -256,37 +255,58 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate  
                         return
                     }
 
-                    print("DELETE: \(self.stringFrom(data: deleteData!))")
-                    // Add the new label. //
-                    let newLabelColor  = (active) ? "red" : "green"
-                    
-                    let newLabelName = (active) ? "inactive" : "active"
-                    let addParameters = [ "color" : newLabelColor
-                                        , "name" : newLabelName
-                                        , "key" : Constants.Trello.API_KEY
-                                        , "token" : Constants.Trello.API_TOKEN ]
+                    do
+                    {
 
-                    Request.make(request: .POST, to: Constants.Trello.URLS.setLabel(cardID: cardID), with: addParameters) { postError, postData in
+                        let deleteJSON = try JSONSerialization.jsonObject(with: getData!, options: []) as? [String: Any]
 
-                        guard postError == nil else
-                        {
-                            completion(false, postError)
-                            return
+                        print("DELETE: \(self.stringFrom(data: deleteData!))")
+                        // Add the new label. //
+                        let newLabelColor = (active) ? "red" : "green"
+
+                        let newLabelName = (active) ? Constants.Trello.LABEL_INACTIVE : Constants.Trello.LABEL_ACTIVE
+                        let addParameters = ["color": newLabelColor
+                                , "name": newLabelName
+                                , "key": Constants.Trello.API_KEY
+                                , "token": Constants.Trello.API_TOKEN]
+
+                        Request.make(request: .POST, to: Constants.Trello.URLS.setLabel(cardID: cardID), with: addParameters) { postError, postData in
+
+                            guard postError == nil else {
+                                completion(false, postError)
+                                return
+                            }
+
+                            do
+                            {
+                                let postJSON = try JSONSerialization.jsonObject(with: postData!) as? [String: Any]
+
+
+                                print("POST: \(self.stringFrom(data: postData!))")
+                                print("Success!")
+
+
+                                self.updateView(loggedIn: !active, error: requestError)
+
+                                self.sendConfirmationMessage(name: firstName, loggedIn: !active, numbers: recipients)
+                            }
+                            catch let error
+                            {
+                                completion(false, "Error whilst parsing JSON (POST): \(String(describing: (error.localizedDescription)))\nResponse: \"\(self.stringFrom(data: postData!))\"\n(Please show this error to David Wolters)")
+                            }
                         }
 
-                        print("POST: \(self.stringFrom(data: postData!))")
-                        print("Success!")
-
-
-                        self.updateView(loggedIn: !active, error: requestError)
-                        
-                        self.sendConfirmationMessage(name : fullName, loggedIn : !active, numbers : recipients)
+                    }
+                    catch let error
+                    {
+                        completion(false, "Error whilst parsing JSON (DELETE): \(String(describing: (error.localizedDescription)))\nResponse: \"\(self.stringFrom(data: deleteData!))\"(Please show this error to David Wolters)")
                     }
                 }
             }
             catch
             {
-                requestError = ("Error whilst casting JSON: \(error.localizedDescription)")
+                requestError = ("Error whilst casting JSON (GET): \(error.localizedDescription)\nResponse: \"\(self.stringFrom(data: getData!))\"(Please show this error to David Wolters)")
+                completion(false, requestError)
                 print("[ERROR] \(String(describing: requestError))")
             }
         }

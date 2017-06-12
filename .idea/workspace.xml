@@ -2,27 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="434bdf9a-e291-48fa-86a6-434aa57dba7e" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/QRReader/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@2x-1.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/QRReader/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@2x-1.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/QRReader/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@2x-1.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QRReader/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@1x.png" afterPath="$PROJECT_DIR$/QRReader/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@1x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QRReader/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@2x.png" afterPath="$PROJECT_DIR$/QRReader/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QRReader/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@3x.png" afterPath="$PROJECT_DIR$/QRReader/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@3x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QRReader/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@1x.png" afterPath="$PROJECT_DIR$/QRReader/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@1x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QRReader/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@2x.png" afterPath="$PROJECT_DIR$/QRReader/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QRReader/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@3x.png" afterPath="$PROJECT_DIR$/QRReader/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@3x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QRReader/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@1x.png" afterPath="$PROJECT_DIR$/QRReader/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@1x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QRReader/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@2x.png" afterPath="$PROJECT_DIR$/QRReader/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QRReader/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@3x.png" afterPath="$PROJECT_DIR$/QRReader/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@3x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QRReader/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@2x.png" afterPath="$PROJECT_DIR$/QRReader/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QRReader/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@3x.png" afterPath="$PROJECT_DIR$/QRReader/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@3x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QRReader/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@1x.png" afterPath="$PROJECT_DIR$/QRReader/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@1x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QRReader/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@2x.png" afterPath="$PROJECT_DIR$/QRReader/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QRReader/Assets.xcassets/AppIcon.appiconset/Icon-App-83.5x83.5@2x.png" afterPath="$PROJECT_DIR$/QRReader/Assets.xcassets/AppIcon.appiconset/Icon-App-83.5x83.5@2x.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QRReader/Assets.xcassets/AppIcon.appiconset/Contents.json" afterPath="$PROJECT_DIR$/QRReader/Assets.xcassets/AppIcon.appiconset/Contents.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QRReader/Base.lproj/LaunchScreen.storyboard" afterPath="$PROJECT_DIR$/QRReader/Base.lproj/LaunchScreen.storyboard" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QRReader/Info.plist" afterPath="$PROJECT_DIR$/QRReader/Info.plist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QRReader/code/MobileResponse.swift" afterPath="$PROJECT_DIR$/QRReader/code/MobileResponse.swift" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QRReader/code/Constants.swift" afterPath="$PROJECT_DIR$/QRReader/code/Constants.swift" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QRReader/code/ViewController.swift" afterPath="$PROJECT_DIR$/QRReader/code/ViewController.swift" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -37,13 +21,33 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ViewController.swift" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ViewController.swift" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/QRReader/code/ViewController.swift">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="148">
-              <caret line="179" column="0" lean-forward="false" selection-start-line="179" selection-start-column="0" selection-end-line="179" selection-end-column="8" />
+            <state relative-caret-position="193">
+              <caret line="242" column="0" lean-forward="true" selection-start-line="242" selection-start-column="0" selection-end-line="242" selection-end-column="0" />
               <folding>
-                <marker date="1497006831000" expanded="true" signature="363:461" ph="{...}" />
+                <marker date="1497206437000" expanded="true" signature="363:461" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Constants.swift" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/QRReader/code/Constants.swift">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="138">
+              <caret line="22" column="43" lean-forward="false" selection-start-line="22" selection-start-column="43" selection-end-line="22" selection-end-column="43" />
+              <folding>
+                <marker date="1497206647000" expanded="true" signature="449:2587" ph="{...}" />
+                <marker date="1497206647000" expanded="true" signature="473:1810" ph="{...}" />
+                <marker date="1497206647000" expanded="true" signature="1124:1804" ph="{...}" />
+                <marker date="1497206647000" expanded="true" signature="1283:1431" ph="{...}" />
+                <marker date="1497206647000" expanded="true" signature="1524:1595" ph="{...}" />
+                <marker date="1497206647000" expanded="true" signature="1710:1794" ph="{...}" />
+                <marker date="1497206647000" expanded="true" signature="1841:2585" ph="{...}" />
+                <marker date="1497206647000" expanded="true" signature="2048:2346" ph="{...}" />
+                <marker date="1497206647000" expanded="true" signature="2440:2579" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -52,24 +56,31 @@
       <file leaf-file-name="Request.swift" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/QRReader/code/Request.swift">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
+            <state relative-caret-position="720">
               <caret line="48" column="22" lean-forward="false" selection-start-line="48" selection-start-column="22" selection-end-line="48" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MobileResponse.swift" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MobileResponse.swift" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/QRReader/code/MobileResponse.swift">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="25" lean-forward="false" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+            <state relative-caret-position="285">
+              <caret line="19" column="49" lean-forward="false" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>fullName</find>
+      <find>inactive</find>
+      <find>active</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -79,10 +90,10 @@
       <list>
         <option value="$PROJECT_DIR$/QRReader/Constants.swift" />
         <option value="$PROJECT_DIR$/QRReader/MobileResponse.swift" />
-        <option value="$PROJECT_DIR$/QRReader/code/Constants.swift" />
         <option value="$PROJECT_DIR$/QRReader/code/Request.swift" />
-        <option value="$PROJECT_DIR$/QRReader/code/ViewController.swift" />
         <option value="$PROJECT_DIR$/QRReader/code/MobileResponse.swift" />
+        <option value="$PROJECT_DIR$/QRReader/code/Constants.swift" />
+        <option value="$PROJECT_DIR$/QRReader/code/ViewController.swift" />
       </list>
     </option>
   </component>
@@ -112,7 +123,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Cidr.FilesView" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -159,6 +169,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Cidr.FilesView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -249,12 +260,13 @@
       <updated>1496601281340</updated>
       <workItem from="1496601284027" duration="6860000" />
       <workItem from="1496688596260" duration="6017000" />
-      <workItem from="1497005861719" duration="2036000" />
+      <workItem from="1497005861719" duration="5993000" />
+      <workItem from="1497204765661" duration="2840000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14913000" />
+    <option name="totallyTimeSpent" value="21710000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -270,12 +282,12 @@
     <editor active="true" />
     <layout>
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2428401" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15871121" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17431192" sideWeight="0.48090693" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.61342084" sideWeight="0.46386093" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.44444445" sideWeight="0.51789975" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.44444445" sideWeight="0.48210025" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.44750255" sideWeight="0.5322196" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.44750255" sideWeight="0.46778044" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -297,7 +309,9 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
@@ -306,7 +320,51 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1497006831000" expanded="true" signature="363:461" ph="{...}" />
+            <marker date="1497206437000" expanded="true" signature="363:461" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QRReader/code/Constants.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="38" column="12" lean-forward="true" selection-start-line="38" selection-start-column="12" selection-end-line="38" selection-end-column="12" />
+          <folding>
+            <marker date="1497206647000" expanded="true" signature="449:2587" ph="{...}" />
+            <marker date="1497206647000" expanded="true" signature="473:1810" ph="{...}" />
+            <marker date="1497206647000" expanded="true" signature="1124:1804" ph="{...}" />
+            <marker date="1497206647000" expanded="true" signature="1283:1431" ph="{...}" />
+            <marker date="1497206647000" expanded="true" signature="1524:1595" ph="{...}" />
+            <marker date="1497206647000" expanded="true" signature="1710:1794" ph="{...}" />
+            <marker date="1497206647000" expanded="true" signature="1841:2585" ph="{...}" />
+            <marker date="1497206647000" expanded="true" signature="2048:2346" ph="{...}" />
+            <marker date="1497206647000" expanded="true" signature="2440:2579" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QRReader/code/Request.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="720">
+          <caret line="48" column="22" lean-forward="false" selection-start-line="48" selection-start-column="22" selection-end-line="48" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QRReader/code/MobileResponse.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="49" lean-forward="false" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QRReader/code/ViewController.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1497206437000" expanded="true" signature="363:461" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -331,7 +389,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="795">
           <caret line="53" column="74" lean-forward="false" selection-start-line="53" selection-start-column="74" selection-end-line="53" selection-end-column="74" />
-          <folding />
+          <folding>
+            <marker date="1497206647000" expanded="true" signature="449:2587" ph="{...}" />
+            <marker date="1497206647000" expanded="true" signature="473:1810" ph="{...}" />
+            <marker date="1497206647000" expanded="true" signature="1124:1804" ph="{...}" />
+            <marker date="1497206647000" expanded="true" signature="1283:1431" ph="{...}" />
+            <marker date="1497206647000" expanded="true" signature="1524:1595" ph="{...}" />
+            <marker date="1497206647000" expanded="true" signature="1710:1794" ph="{...}" />
+            <marker date="1497206647000" expanded="true" signature="1841:2585" ph="{...}" />
+            <marker date="1497206647000" expanded="true" signature="2048:2346" ph="{...}" />
+            <marker date="1497206647000" expanded="true" signature="2440:2579" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -356,42 +424,52 @@
         <state relative-caret-position="2880">
           <caret line="193" column="73" lean-forward="false" selection-start-line="193" selection-start-column="73" selection-end-line="193" selection-end-column="73" />
           <folding>
-            <marker date="1497006831000" expanded="true" signature="363:461" ph="{...}" />
+            <marker date="1497206437000" expanded="true" signature="363:461" ph="{...}" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/QRReader/code/Constants.swift">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="795">
-          <caret line="53" column="74" lean-forward="false" selection-start-line="53" selection-start-column="74" selection-end-line="53" selection-end-column="74" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/QRReader/code/Request.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
+        <state relative-caret-position="720">
           <caret line="48" column="22" lean-forward="false" selection-start-line="48" selection-start-column="22" selection-end-line="48" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/QRReader/code/ViewController.swift">
+    <entry file="file://$PROJECT_DIR$/QRReader/code/MobileResponse.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="179" column="0" lean-forward="false" selection-start-line="179" selection-start-column="0" selection-end-line="179" selection-end-column="8" />
+        <state relative-caret-position="285">
+          <caret line="19" column="49" lean-forward="false" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QRReader/code/Constants.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="22" column="43" lean-forward="false" selection-start-line="22" selection-start-column="43" selection-end-line="22" selection-end-column="43" />
           <folding>
-            <marker date="1497006831000" expanded="true" signature="363:461" ph="{...}" />
+            <marker date="1497206647000" expanded="true" signature="449:2587" ph="{...}" />
+            <marker date="1497206647000" expanded="true" signature="473:1810" ph="{...}" />
+            <marker date="1497206647000" expanded="true" signature="1124:1804" ph="{...}" />
+            <marker date="1497206647000" expanded="true" signature="1283:1431" ph="{...}" />
+            <marker date="1497206647000" expanded="true" signature="1524:1595" ph="{...}" />
+            <marker date="1497206647000" expanded="true" signature="1710:1794" ph="{...}" />
+            <marker date="1497206647000" expanded="true" signature="1841:2585" ph="{...}" />
+            <marker date="1497206647000" expanded="true" signature="2048:2346" ph="{...}" />
+            <marker date="1497206647000" expanded="true" signature="2440:2579" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/QRReader/code/MobileResponse.swift">
+    <entry file="file://$PROJECT_DIR$/QRReader/code/ViewController.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="25" lean-forward="false" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
-          <folding />
+        <state relative-caret-position="193">
+          <caret line="242" column="0" lean-forward="true" selection-start-line="242" selection-start-column="0" selection-end-line="242" selection-end-column="0" />
+          <folding>
+            <marker date="1497206437000" expanded="true" signature="363:461" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
